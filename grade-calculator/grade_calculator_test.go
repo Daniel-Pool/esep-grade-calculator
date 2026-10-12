@@ -159,3 +159,53 @@ func TestOnlyInputted(t *testing.T){
 		t.Errorf("Expected F, it is incorrect.")
 	}
 }
+
+//Extra Credit for Part 7
+
+//Pass
+func TestPass (t *testing.T){
+	expected_val := "Pass"
+
+	gradeCalculator := NewPassFailGradeCalculator()
+	gradeCalculator.AddGrade("homework", 70, Assignment)
+	gradeCalculator.AddGrade("exam", 70, Exam)
+	gradeCalculator.AddGrade("essay", 70, Essay)
+
+	actual_val := gradeCalculator.GetFinalGrade()
+
+	if expected_val != actual_val {
+		t.Errorf("Failed to meet Expected")
+	}
+}
+
+//Fail
+func TestFail (t *testing.T){
+	expected_val := "Fail"
+
+	gradeCalculator := NewPassFailGradeCalculator()
+	gradeCalculator.AddGrade("homework", 50, Assignment)
+	gradeCalculator.AddGrade("exam", 50, Exam)
+	gradeCalculator.AddGrade("essay", 50, Essay)
+
+	actual_val := gradeCalculator.GetFinalGrade()
+
+	if expected_val != actual_val {
+		t.Errorf("Failed to meet Expected")
+	}
+}
+
+//Reverify letter calculation still works
+func TestLetterGrade(t *testing.T){
+	expected_val := "A"
+
+	gradeCalculator := NewGradeCalculator()
+	gradeCalculator.AddGrade("homework", 100, Assignment)
+	gradeCalculator.AddGrade("exam", 100, Exam)
+	gradeCalculator.AddGrade("essay", 100, Essay)
+
+	actual_val := gradeCalculator.GetFinalGrade()
+
+	if expected_val != actual_val {
+		t.Errorf("Failed to meet Expected")
+	}
+}
